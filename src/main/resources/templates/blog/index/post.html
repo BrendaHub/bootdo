@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head th:include="/blog/index/include_blog::header"></head>
+<body>
+	<div th:include="/blog/index/include_blog::nav"></div>
+
+	<!-- Page Header -->
+	<header class="intro-header"
+		style="background-image: url('/img/blog/post-bg.jpg')">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1">
+					<div class="post-heading">
+						<h1 th:text="${bContent.title}">Man must explore, and this is
+							exploration at its greatest</h1>
+						<h2 class="subheading">Problems look mighty small from 150
+							miles up</h2>
+						<span class="meta">作者 <a href="#"
+							th:text="${bContent.author}">Start Bootstrap</a> on August 24,
+							2017
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<!-- Post Content -->
+	<article>
+		<div class="container">
+			<div class="col-sm-11">
+				<div id="content" class="summernote"></div>
+			</div>
+		</div>
+	</article>
+
+	<hr>
+
+	<div th:include="/blog/index/include_blog::footer"></div>
+
+	<script type="text/javascript" th:inline="javascript">
+		$().ready(function() {
+			$('.summernote').summernote({
+				lang : 'zh-CN'
+			});
+			var content = /*[[${bContent.content}]]*/
+			$('#content').code(content);
+			$('.summernote').destroy();
+		});
+	</script>
+
+</body>
+
+</html>
